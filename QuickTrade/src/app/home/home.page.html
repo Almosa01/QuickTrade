@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      QuickTrade AE7
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">QuickTrade AE7</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+    <ion-input placeholder="Nombre"></ion-input>
+    <ion-input placeholder="Descripcion"></ion-input>
+    <ion-input placeholder ="Precio"[type]="tipo" ></ion-input>
+  
+<ion-item>
+  <ion-label>Categoria</ion-label>
+  <ion-select [(ngModel)]="categoria">
+    <ion-select-option value="tecnologia">Tecnologia</ion-select-option>
+    <ion-select-option value="tecnologia">Inmobiliaria</ion-select-option>
+    <ion-select-option value="tecnologia">Hogar</ion-select-option>
+    <ion-select-option value="tecnologia">Motor</ion-select-option>
+  </ion-select>
+</ion-item>
+
+<ion-content *ngIf = "categoria=='tecnologia'">
+  <ion-item>
+    <ion-label>Estado</ion-label>
+    <ion-select [(ngModel)]="estado">
+    <ion-select-option value="nuevo">Nuevo</ion-select-option>
+    <ion-select-option value="usado">Usado</ion-select-option>
+    </ion-select>  
+  </ion-item>
+</ion-content>
+
+<ion-content *ngIf = "categoria=='motor'">
+<ion-item>
+  <ion-label>Tipo</ion-label>
+  <ion-select [(ngModel)]="tipos">
+  <ion-select-option value="moto">Moto</ion-select-option>
+  <ion-select-option value="coche">Coche</ion-select-option>
+  </ion-select>  
+</ion-item>
+
+</ion-content>
+<ion-content *ngIf = "categoria=='inmobiliaria'">
+  <ion-input placeholder="m2" type="number"></ion-input>
+  <ion-input placeholder="Nº Baños" type="number"></ion-input>
+  <ion-input placeholder="Nº Habitaciones" type="number"></ion-input>
+  <ion-input placeholder="Localidad"></ion-input>  
+</ion-content>
+
