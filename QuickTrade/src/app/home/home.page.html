@@ -12,10 +12,10 @@
       <ion-title size="large">QuickTrade AE7</ion-title>
     </ion-toolbar>
   </ion-header>
-
-    <ion-input placeholder="Nombre"></ion-input>
-    <ion-input placeholder="Descripcion"></ion-input>
-    <ion-input placeholder ="Precio"[type]="tipo" ></ion-input>
+  
+  <ion-input placeholder="Nombre"[(ngModel)]="nombre"></ion-input>
+  <ion-input placeholder="Descripción"[(ngModel)]="descripcion"></ion-input>
+  <ion-input placeholder="Precio" [type]="tipo"[(ngModel)]="precio"></ion-input>
   
 <ion-item>
   <ion-label>Categoria</ion-label>
@@ -26,6 +26,51 @@
     <ion-select-option value="tecnologia">Motor</ion-select-option>
   </ion-select>
 </ion-item>
+<ion-button expand="block" (click)="insertar()">Insertar</ion-button>
+
+
+
+<ion-card *ngFor="let item of productos">
+  <ion-card-header>
+    <ion-card-title>Producto {{item.nombre}}</ion-card-title>
+    <ion-label>Descripcion:</ion-label>
+    {{item.descripcion}}
+    <ion-label>Precio:</ion-label>
+    {{item.precio}}
+    <ion-label>Categoria:</ion-label>
+    {{item.categoria}}
+
+    <ion-label  *ngIf = "categoria=='motor'">tipos:</ion-label>
+    {{item.tipos}}
+
+    <ion-label  *ngIf = "categoria=='motor'">Km:</ion-label>
+    {{item.km}}
+
+    <ion-label  *ngIf = "categoria=='motor'">Año:</ion-label>
+    {{item.anyo}}
+
+    <ion-label *ngIf = "categoria=='inmobiliaria'">m2:</ion-label>
+    {{item.m2}}
+
+    <ion-label *ngIf = "categoria=='inmobiliaria'">Nº Baños:</ion-label>
+    {{item.nbanyos}}
+
+    <ion-label *ngIf = "categoria=='inmobiliaria'">Nº Habitaciones:</ion-label>
+    {{item.nhabitaciones}}
+
+    <ion-label *ngIf = "categoria=='inmobiliaria'">Localidad:</ion-label>
+    {{item.localidad}}
+
+    <ion-label *ngIf = "categoria=='tecnologia'">Estado:</ion-label>
+    {{item.estado}}
+    
+  </ion-card-header>
+  <ion-card-content>
+    <ion-button expand="block" [routerLink]="['/details','hola']" routerDirection="forward">Detalle</ion-button>
+  </ion-card-content>
+</ion-card>
+
+
 
 <ion-content *ngIf = "categoria=='tecnologia'">
   <ion-item>
@@ -37,6 +82,8 @@
   </ion-item>
 </ion-content>
 
+
+
 <ion-content *ngIf = "categoria=='motor'">
 <ion-item>
   <ion-label>Tipo</ion-label>
@@ -45,6 +92,7 @@
   <ion-select-option value="coche">Coche</ion-select-option>
   </ion-select>  
 </ion-item>
+
 
 </ion-content>
 <ion-content *ngIf = "categoria=='inmobiliaria'">
