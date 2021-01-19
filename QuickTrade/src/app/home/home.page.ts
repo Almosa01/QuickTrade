@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-import { IProducto, IMotor, IInmobiliaria, ITecnologia } from '../Interfaces';
-
+import { IProducto, IMotor, IInmobiliaria, ITecnologia,IUsuario } from '../Interfaces';
+import { ActivatedRoute } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { ProductoService } from '../services/producto.service';
 
@@ -13,18 +13,20 @@ import { ProductoService } from '../services/producto.service';
 
 export class HomePage {
 
-  cat: string = "Categoria";
-  tipo: string = "number";
+  usuario:number
+  nombre :string;
+  productos: (IProducto | IInmobiliaria | IMotor | ITecnologia | IUsuario)[];
 
+  constructor(private _activatedRoute: ActivatedRoute, private _productoService: ProductoService) { }
 
+  ngOnInit() {
+    let ref= this._productoService.getProductos();
 
-  productos: (IProducto | IInmobiliaria | IMotor | ITecnologia)[] = [];
-  
-
-  constructor(public alertController: AlertController, private _productoService: ProductoService) {
-  
-
-   }
-
-
+    ref.once("value",snapshot =>{
+      snapshot.forEach(child =>{
+        let value =child.val();
+        console.log("El total de me gusta de los usuarios es: " +child.val().usuario);
+      })
+    })
   }
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IProducto, IMotor, IInmobiliaria, ITecnologia } from '../Interfaces';
+import { IProducto, IMotor, IInmobiliaria, ITecnologia, IUsuario } from '../Interfaces';
 import { ActivatedRoute } from '@angular/router';
 import { ProductoService } from '../services/producto.service';
 
@@ -10,9 +10,9 @@ import { ProductoService } from '../services/producto.service';
 })
 export class ListPage implements OnInit {
 
-
+  usuario:number
   nombre :string;
-  productos: (IProducto | IInmobiliaria | IMotor | ITecnologia)[];
+  productos: (IProducto | IInmobiliaria | IMotor | ITecnologia | IUsuario)[];
 
   constructor(private _activatedRoute: ActivatedRoute, private _productoService: ProductoService) { }
 
@@ -21,7 +21,9 @@ export class ListPage implements OnInit {
 
     ref.once("value",snapshot =>{
       snapshot.forEach(child =>{
-        this.nombre=child.val().nombre
+        let value =child.val();
+        this.productos.push(value);
+        console.log("El total de me gusta de los usuarios es: " +child.val().usuario);
       })
     })
   }

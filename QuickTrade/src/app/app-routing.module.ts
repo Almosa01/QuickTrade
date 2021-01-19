@@ -23,6 +23,11 @@ const routes: Routes = [
     path: 'insert',
     loadChildren: () => import('./insert/insert.module').then( m => m.InsertPageModule)
   },
+  {
+    path: 'megusta/:usuario',
+    loadChildren: () => import('./megusta/megusta.module').then( m => m.MegustaPageModule)
+  },
+
 ];
 
 @NgModule({
