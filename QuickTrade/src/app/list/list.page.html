@@ -7,7 +7,7 @@
 <ion-content>
   <ion-card *ngFor="let item of productos">
     <ion-card-header>
-      <ion-card-title>Producto {{item.nombre}}</ion-card-title>
+      <ion-card-title>Producto {{nombre}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-button expand="block" [routerLink]="['/details/',item.id]">Detalles del producto</ion-button>

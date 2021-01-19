@@ -31,7 +31,7 @@ export class DetailsPage implements OnInit {
 
   ngOnInit() {
       
-    this.id = +this._activatedRoute.snapshot.paramMap.get('id');
+    /*this.id = +this._activatedRoute.snapshot.paramMap.get('id');
 
 
     this.id = this._productoService.getProducto(this.id).id;
@@ -39,7 +39,8 @@ export class DetailsPage implements OnInit {
     this.descripcion = this._productoService.getProducto(this.id).descripcion;
     this.precio = this._productoService.getProducto(this.id).precio;
     this.categoria = this._productoService.getProducto(this.id).categoria;
-
+    
+  */
   
   }
 
